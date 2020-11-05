@@ -1,2 +1,4 @@
 # Project exclude paths
 /target/
+/g33-workshop-array.iml
+/.idea/
