@@ -2,89 +2,28 @@ package se.lexicon;
 
 import java.util.Arrays;
 
-public class App
-{
+import static se.lexicon.NameDAO.*;
 
-   static String[] names = new String[] {};
+public class App {
 
-    public static void main( String[] args )
-    {
+    public static void main(String[] args) {
         add("Simon Elbrink");
+        add("simon Elbrink2");
         add("Ulf Bengtsson");
         add("Erik Svensson");
+        add("Erik Svensson12");
+        add("Erik Svensson13");
 
-        System.out.println(Arrays.toString(names));
+        System.out.println(Arrays.toString(NameDAO.arrayOfNames));
 
         remove("Ulf Bengtsson");
-        System.out.println(Arrays.toString(names));
+        System.out.println(Arrays.toString(NameDAO.arrayOfNames));
+
+        System.out.println("Find My Name Method:");
+        System.out.println(Arrays.toString(findByFirstName("eRiK")));
+        System.out.println(Arrays.toString(findByLastName("Elbrink")));
 
 
     }
-
-    public static boolean add(String fullName){
-
-        boolean isAdded = false;
-
-        if (!nameExists(fullName)){
-            names = Arrays.copyOf(names, names.length +1);
-            names[names.length -1] = fullName;
-            isAdded = true;
-        }
-
-        return isAdded;
-    }
-
-    public static boolean nameExists(String fullName){
-        boolean IsExisting = false;
-
-        for (int i = 0; i < App.names.length; i++) {
-            if (App.names[i].equals(fullName)){
-                IsExisting = true;
-                break;
-            }
-        }
-        return IsExisting;
-    }
-
-
-    public static boolean remove(String fullName){
-        boolean isDeleted = false;
-
-        if (names.length == 0){
-            System.out.println("Array is empty");
-
-        }else if(nameExists(fullName)){
-
-            String[] newArray = new String[names.length -1];
-
-            for (int i = 0, j = 0 ; i < names.length; i++, j++){
-                if (names[i].equals(fullName)){
-                    --j;
-                    isDeleted = true;
-                }else{
-                    newArray[j] = names[i];
-                }
-
-            }
-
-            names = newArray;
-        }else{
-            System.out.println("Could not find name to remove");
-        }
-
-        return isDeleted;
-    }
-
-
-    public static void clear(){
-        if (App.names == null){
-            System.out.println("Name list is not initialized, now initialized.");
-        }else{
-            System.out.println("Name list had been emptied!");
-        }
-
-        App.names = new String[0];
-    }
-
 
 }
