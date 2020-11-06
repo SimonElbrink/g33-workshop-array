@@ -1,10 +1,8 @@
 package se.lexicon;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import java.util.Arrays;
+
+public class App
 {
 
    static String[] names = new String[] {};
@@ -37,23 +35,18 @@ public class App
     }
 
     public static boolean nameExists(String fullName){
-        boolean result = false;
+        boolean IsExisting = false;
 
         for (int i = 0; i < App.names.length; i++) {
             if (App.names[i].equals(fullName)){
-                result = true;
+                IsExisting = true;
                 break;
             }
         }
-        return result;
+        return IsExisting;
     }
 
 
-    /**
-     *
-     * @param fullName
-     * @return
-     */
     public static boolean remove(String fullName){
         boolean isDeleted = false;
 
@@ -75,9 +68,8 @@ public class App
             }
 
             names = newArray;
-
-            return isDeleted;
-
+        }else{
+            System.out.println("Could not find name to remove");
         }
 
         return isDeleted;
@@ -86,7 +78,7 @@ public class App
 
     public static void clear(){
         if (App.names == null){
-            System.out.println("Name list is not initialized, but now created.");
+            System.out.println("Name list is not initialized, now initialized.");
         }else{
             System.out.println("Name list had been emptied!");
         }
